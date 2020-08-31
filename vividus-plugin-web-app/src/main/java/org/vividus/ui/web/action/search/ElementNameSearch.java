@@ -16,23 +16,10 @@
 
 package org.vividus.ui.web.action.search;
 
-import java.util.List;
-
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebElement;
-import org.vividus.ui.web.util.LocatorUtil;
-
-public class ElementNameSearch extends AbstractElementSearchAction implements IElementSearchAction
+public class ElementNameSearch extends AbstractElementNameSearch
 {
-    @Override
-    public List<WebElement> search(SearchContext searchContext, SearchParameters parameters)
+    public ElementNameSearch()
     {
-        if (null != searchContext)
-        {
-            String elementName = parameters.getValue();
-            return findElementsByText(searchContext,
-                    LocatorUtil.getXPathLocator(".//*[@*=%1$s or text()=%1$s]", elementName), parameters, "*");
-        }
-        return List.of();
+        super(WebLocatorType.ELEMENT_NAME);
     }
 }

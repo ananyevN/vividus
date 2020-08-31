@@ -31,6 +31,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
+import org.vividus.ui.action.search.SearchParameters;
 
 @ExtendWith(MockitoExtension.class)
 class ElementNameSearchTests
@@ -62,5 +63,11 @@ class ElementNameSearchTests
         ElementNameSearch spy = Mockito.spy(elementNameSearch);
         List<WebElement> foundElements = spy.search(null, searchParameters);
         assertEquals(List.of(), foundElements);
+    }
+
+    @Test
+    void testGetAttributeType()
+    {
+        assertEquals(WebLocatorType.ELEMENT_NAME, elementNameSearch.getType());
     }
 }
